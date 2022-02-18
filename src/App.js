@@ -32,7 +32,7 @@ function App() {
             clearInterval(interval)
         }
         return () => clearInterval(interval)
-    }, [seconds])
+    }, [seconds]) // eslint-disable-line react-hooks/exhaustive-deps
     
     React.useEffect(() => {
         localStorage.setItem('highScore', JSON.stringify(highScore))
