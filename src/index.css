@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+html {
+  --background: #FDD835;
+  --app-window: #FFFDE7;
+  --die-color: white;
+  --die-color-hover: #FFFF8D;
+  --die-color-held: #FFEA00;
+  --trackers: #FBC02D;
+  --roll-btn: #F57F17;
+  --roll-btn-hover: #f58a2d;
+  --app-font: #353535;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,10 +27,10 @@ body {
 
 #root {
   margin: 0;
-  background-color: #5a6299;
+  background-color: var(--background);
   padding: 2em;
   font-family: 'Karla', sans-serif;
-  color: #353535;
+  color: var(--app-font);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,7 +44,7 @@ code {
 }
 
 main {
-  background-color: #F5F5F5;
+  background-color: var(--app-window);
   height: 480px;
   max-width: 480px;
   border-radius: 10px;
@@ -41,6 +53,7 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  box-shadow: #00000033 0px 12px 28px 0px, #0000001a 0px 2px 4px 0px, #ffffff0d 0px 0px 0px 1px inset;
 }
 
 .title {
@@ -70,7 +83,7 @@ main {
 .die-face {
   height: 50px;
   width: 50px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 2px #00000026;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -78,7 +91,11 @@ main {
   cursor: pointer;
   padding: .5em;
   background-color: transparent;
-  justify-content: space-between
+  justify-content: space-between;
+  transition: 200ms;
+}
+.die-face:hover {
+  transform: scale(1.1);
 }
 
 .tracker-container {
@@ -88,8 +105,8 @@ main {
 }
 
 .tracker {
-  background-color: #757ebd;
-  color: white;
+  background-color: var(--trackers);
+  color: var(--app-font);
   padding: .8em 0;
   border-radius: 6px;
   font-size: .8rem;
@@ -104,19 +121,21 @@ main {
   width: 200px;
   border: none;
   border-radius: 6px;
-  background-color: #5035FF;
+  background-color: var(--roll-btn);
   color: white;
   font-size: 1.2rem;
   font-family: 'Karla', sans-serif;
   cursor: pointer;
 }
-
+.roll-dice:hover {
+  background-color: var(--roll-btn-hover);
+}
 .roll-dice:focus {
   outline: none;
 }
 
 .roll-dice:active {
-  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 5px 5px 10px -3px #000000b3;
 }
 
 .high-score {
@@ -132,7 +151,7 @@ main {
 .dot {
   height: 9px;
   width: 9px;
-  background-color: #353535;
+  background-color: var(--app-font);
   border-radius: 50%;
 }
 
@@ -167,7 +186,7 @@ main {
 
 @media (max-width: 620px){
   #root {
-    background-color: #F5F5F5;
+    background-color: var(--app-window);
   }
   main {
     height: 37.5em;
